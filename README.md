@@ -15,19 +15,15 @@ QuizApp is a Java-based web application that allows users to register, take quiz
 
 * Admin-only dashboard (`/admin-home`)
 * User Management:
-
   * View users with pagination
   * Activate/Suspend user accounts
 * Question Management:
-
   * View all questions
   * Add, edit, activate/suspend questions
 * Quiz Result Management:
-
   * View quiz results (with filters by user/category)
   * See individual quiz result details
 * Contact Us Management:
-
   * View user messages
   * Open full view of message content
 
@@ -50,12 +46,12 @@ QuizApp is a Java-based web application that allows users to register, take quiz
 
 ### Database Setup
 
-1. Create a database called `quizdb`
-2. Import the schema and any seed data you have
+1. Create a database called `quizdb` (for local setups)
+2. Import the schema and any seed data using the included SQL file: `Quiz_Project_SQL.sql`
 
 ### Configuration
 
-Edit `src/main/resources/application.properties`:
+Edit `src/main/resources/application.properties` for local development:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/quizdb
@@ -72,38 +68,62 @@ spring.mvc.view.suffix=.jsp
 ./mvnw spring-boot:run
 ```
 
-Visit [http://localhost:8080](http://localhost:8080) in your browser.
+Visit [http://localhost:8080/login](http://localhost:8080/login) in your browser.
 
-## Admin Credentials (Sample)
+### Pre-created Accounts (for testing without registration)
 
-```sql
-INSERT INTO user (email, password, firstname, lastname, is_active, is_admin)
-VALUES ('admin@example.com', 'admin123', 'Admin', 'User', 1, 1);
-```
+* **Admin:** admin@example.com / admin123
+* **Test User:** user1@example.com / user123
+
+## Deployment / Hosted Version (Optional)
+
+A live version of QuizApp is hosted on Render:
+[https://quizapp-67i3.onrender.com/login](https://quizapp-67i3.onrender.com/login)
+
+> Note: Free Render instances may spin down after inactivity, causing initial requests to take longer. You can use services like [UptimeRobot](https://uptimerobot.com/) to ping the app periodically if you want it to stay "awake."
+
+For Render, the database is called `defaultdb` on Aiven MySQL. Connection info can be configured in `application.properties` or as environment variables.
 
 ## Folder Structure
 
 ```
 src/
  └── main/
-     ├── java/com/example/quiz/
-     │   ├── controller/
-     │   ├── service/
-     │   ├── dao/
-     │   └── domain/
-     └── resources/
-         ├── application.properties
-         └── templates (JSP files)
+     ├── java/
+     │   └── com/example/quiz/
+     │       ├── controller/
+     │       ├── service/
+     │       ├── dao/
+     │       └── domain/
+     │
+     ├── resources/
+     │   ├── application.properties
+     │   
+     │
+     └── webapp/
+         └── WEB-INF/
+             └── jsp/
+                 ├── admin-contact-messages.jsp
+                 ├── admin-contact-view.jsp
+                 ├── admin-home.jsp
+                 ├── admin-question-management.jsp
+                 ├── admin-quiz-results.jsp
+                 ├── admin-user-management.jsp
+                 ├── admin-users.jsp
+                 ├── contact.jsp
+                 ├── home.jsp
+                 ├── login.jsp
+                 ├── navbar.jsp
+                 ├── question-add.jsp
+                 ├── question-edit.jsp
+                 ├── quiz-result.jsp
+                 ├── quiz.jsp
+                 ├── register.jsp
+                 └── unauthorized.jsp
+
 ```
 
 ## Contributions
 
 Pull requests and issues are welcome. Please fork the repository and submit a PR.
 
-## License
-
-This project is open-source. Add a license if required.
-
----
-
-For more details, contact the project maintainer.
