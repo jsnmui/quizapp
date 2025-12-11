@@ -23,7 +23,7 @@
 
     <dependencies>
 
-        <!-- Web + Tomcat (external) -->
+        <!-- Spring Web (external Tomcat) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -81,7 +81,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- For tests -->
+        <!-- Tests -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -93,6 +93,7 @@
     <build>
         <plugins>
 
+            <!-- Spring Boot Maven plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -101,12 +102,14 @@
                 </configuration>
             </plugin>
 
+            <!-- Maven WAR plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warName>ROOT</warName> <!-- IMPORTANT: deploys at / -->
                 </configuration>
             </plugin>
 
