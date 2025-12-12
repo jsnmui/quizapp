@@ -70,19 +70,6 @@ spring.mvc.view.suffix=.jsp
 
 Visit [http://localhost:8080/login](http://localhost:8080/login) in your browser.
 
-### Pre-created Accounts (for testing without registration)
-
-* **Admin:** admin@example.com / admin123
-* **Test User:** user1@example.com / user123
-
-## Deployment / Hosted Version (Optional)
-
-A live version of QuizApp is hosted on Render:
-[https://quizapp-67i3.onrender.com/login](https://quizapp-67i3.onrender.com/login)
-
-> Note: Free Render instances may spin down after inactivity, causing initial requests to take longer. You can use services like [UptimeRobot](https://uptimerobot.com/) to ping the app periodically if you want it to stay "awake."
-
-For Render, the database is called `defaultdb` on Aiven MySQL. Connection info can be configured in `application.properties` or as environment variables.
 
 ## Folder Structure
 
